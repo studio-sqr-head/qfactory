@@ -1,2 +1,5 @@
-npm run build
+#!/bin/bash
 
+echo "🏗️ Checking whether project builds"
+npm run build || (echo "❌ Next build failed: View the errors above to see why." && exit 1)
+echo "✅ Code builds and no issues found, pushing to remote."
