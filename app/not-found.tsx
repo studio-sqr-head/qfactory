@@ -1,20 +1,13 @@
-import NextImage from "next/image"
-export default function Home() {
+export async function NotFound() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24 align-middle">
       <div className="flex flex-col items-center space-y-8 justify-center h-full">
-        <NextImage
-          src="/logo.png"
-          width={800}
-          height={600}
-          alt="Q-Factory Amsterdam"
-        />
         <h1 className="text-6xl font-bold">Q-Factory Amsterdam</h1>
         <p className="text-lg text-secondary">
-          We zijn druk bezig met het bouwen van de Q-Factory-website. Kom snel
-          terug!
+          We are busy building the Q-Factory website. Come back soon!
         </p>
       </div>
     </main>
   )
 }
+export default NotFound
