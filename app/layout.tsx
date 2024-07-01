@@ -25,8 +25,8 @@ export async function generateMetadata({
   return {
     title,
     description,
+    metadataBase: new URL(`${env.NEXT_PUBLIC_BASE_URL}/${lang}`),
     keywords: ["Q-Factory", "Amsterdam", "muziekmakerscentrum"],
-
     openGraph: {
       type: "website",
       locale: lang,

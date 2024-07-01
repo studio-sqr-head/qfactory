@@ -7,6 +7,7 @@ export default function Home() {
         <NextImage
           src="/logo.png"
           width={800}
+          priority
           height={600}
           alt="Q-Factory Amsterdam"
         />
