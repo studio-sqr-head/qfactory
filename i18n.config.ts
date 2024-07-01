@@ -6,6 +6,8 @@ export enum Language {
   en = "en",
 }
 
+export type Languages = keyof typeof Language
+
 export interface LanguageItem<T> {
   id: Language
   title: string

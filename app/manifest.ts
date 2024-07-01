@@ -48,18 +48,6 @@ export default async function manifest(): Promise<MetadataRoute.Manifest> {
         sizes: "180x180",
         type: "image/png",
       },
-
-      {
-        src: "/mstile-150x150.png",
-        sizes: "150x150",
-        type: "image/png",
-      },
-      {
-        src: "/safari-pinned-tab.svg",
-        purpose: "maskable",
-        sizes: "16x16",
-        type: "image/svg+xml",
-      },
     ],
     lang: "nl",
     display_override: ["standalone"],

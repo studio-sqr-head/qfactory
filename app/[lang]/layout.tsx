@@ -1,8 +1,12 @@
 import type { Metadata } from "next"
-import { Overpass_Mono } from "next/font/google"
+import { Inter_Tight } from "next/font/google"
 import { env } from "@/env"
 
-const openSans = Overpass_Mono({ subsets: ["latin"] })
+import { Footer } from "@/app/[lang]/components/footer"
+import { Header } from "@/app/[lang]/components/header"
+import { Main } from "@/app/[lang]/components/main"
+
+const inter = Inter_Tight({ subsets: ["latin"] })
 
 export async function generateMetadata({
   params,
@@ -52,9 +56,13 @@ export default async function RootLayout(
   return (
     <html
       lang={params.lang}
-      className={`${openSans.className} text-black bg-white`}
+      className={`${inter.className} text-black bg-white`}
     >
-      <body>{children}</body>
+      <body>
+        <Header lang={params.lang} />
+        <Main>{children}</Main>
+        <Footer />
+      </body>
     </html>
   )
 }
