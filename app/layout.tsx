@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from "next"
-import { Open_Sans } from "next/font/google"
+import { Overpass_Mono } from "next/font/google"
 import { env } from "@/env"
 
 import "./globals.css"
 
-export const openSans = Open_Sans({ subsets: ["latin"] })
+export const openSans = Overpass_Mono({ subsets: ["latin"] })
 
 export const viewport: Viewport = {
   themeColor: "#000000",
@@ -55,9 +55,9 @@ export default async function RootLayout(
   return (
     <html
       lang={params.lang}
-      className={`${openSans.className} bg-black text-primary`}
+      className={`${openSans.className} text-black bg-white`}
     >
-      <body className="relative">{children}</body>
+      <body>{children}</body>
     </html>
   )
 }

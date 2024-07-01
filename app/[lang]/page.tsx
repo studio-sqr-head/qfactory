@@ -1,4 +1,5 @@
 import NextImage from "next/image"
+
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24 align-middle">
@@ -9,7 +10,7 @@ export default function Home() {
           height={600}
           alt="Q-Factory Amsterdam"
         />
-        <h1 className="text-6xl font-bold">Q-Factory Amsterdam</h1>
+
         <p className="text-lg text-secondary">
           We zijn druk bezig met het bouwen van de Q-Factory-website. Kom snel
           terug!
