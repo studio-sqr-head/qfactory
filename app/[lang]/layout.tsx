@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next"
 import { Overpass_Mono } from "next/font/google"
 import { env } from "@/env"
 
-import "./globals.css"
+import "../globals.css"
 
 const openSans = Overpass_Mono({ subsets: ["latin"] })
 
