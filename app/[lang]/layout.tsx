@@ -1,17 +1,8 @@
-import type { Metadata, Viewport } from "next"
+import type { Metadata } from "next"
 import { Overpass_Mono } from "next/font/google"
 import { env } from "@/env"
 
-import "../globals.css"
-
 const openSans = Overpass_Mono({ subsets: ["latin"] })
-
-export const viewport: Viewport = {
-  themeColor: "#000000",
-  initialScale: 1,
-  width: "device-width",
-  height: "device-height",
-}
 
 export async function generateMetadata({
   params,
@@ -36,6 +27,12 @@ export async function generateMetadata({
       images: [
         {
           url: `${env.NEXT_PUBLIC_BASE_URL}/logo.png`,
+          width: 800,
+          height: 600,
+          alt: "Q-Factory Amsterdam",
+        },
+        {
+          url: `${env.NEXT_PUBLIC_BASE_URL}/${lang}/logo.png`,
           width: 800,
           height: 600,
           alt: "Q-Factory Amsterdam",
