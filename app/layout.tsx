@@ -4,7 +4,7 @@ import { env } from "@/env"
 
 import "./globals.css"
 
-export const openSans = Overpass_Mono({ subsets: ["latin"] })
+const openSans = Overpass_Mono({ subsets: ["latin"] })
 
 export const viewport: Viewport = {
   themeColor: "#000000",
