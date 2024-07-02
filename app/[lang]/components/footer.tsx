@@ -1,3 +1,4 @@
+import NextImage from "next/image"
 import NextLink from "next/link"
 import { Container } from "@/app/[lang]/components/container"
 import { Logo } from "@/app/[lang]/components/logo"
@@ -77,12 +78,18 @@ export const Footer = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
             <div className="flex gap-4 items-center">
-              {[...Array(4)].map((_, index) => (
-                <div
-                  key={index}
-                  className="w-8 h-8 bg-gray-300 rounded-full"
-                ></div>
-              ))}
+              {["instagram", "linkedin", "facebook", "spotify"].map(
+                (social) => (
+                  <div key={social}>
+                    <NextImage
+                      src={`/${social}.png`}
+                      alt={social}
+                      width={32}
+                      height={32}
+                    />
+                  </div>
+                )
+              )}
             </div>
             <div className="flex justify-end gap-4 items-center">
               {/* partners */}

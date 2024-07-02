@@ -299,21 +299,21 @@ const ProgramListItem = (props: Program) => {
         />
 
         <div className="absolute bottom-0 left-0 right-0 p-2">
-          <p className="text-white text-sm">{props.category}</p>
+          <p className="text-white text-sm bg-black bg-opacity-50 p-2 rounded-md">
+            {props.category}
+          </p>
         </div>
       </div>
-      <div className="flex justify-between w-full items-center">
-        <div className="flex flex-col gap-4">
-          <div className="flex gap-2 flex-col">
-            <h3 className="text-4xl font-bold">{props.title}</h3>
 
-            <p className="text-gray-500">{props.location}</p>
-          </div>
-          <p>{props.description}</p>
-        </div>
-
-        <div className="flex flex-col justify-between">
+      <div className="flex flex-col gap-4 w-full justify-center">
+        <div className="flex justify-between items-center w-full">
+          <h3 className="text-4xl font-bold">{props.title}</h3>
           <p>{props.time}</p>
+        </div>
+        <p className="text-gray-500">{props.location}</p>
+
+        <div className="flex justify-between w-full items-center">
+          <p>{props.description}</p>
           <p>{props.price}</p>
         </div>
       </div>
