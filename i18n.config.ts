@@ -12,7 +12,7 @@ export interface LanguageItem<T> {
   id: Language
   title: string
   isDefault: boolean
-  path: UrlObject | Route<`/${Language}`>
+  path: string
 }
 
 export const languages: LanguageItem<Language>[] = [
