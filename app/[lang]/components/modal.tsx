@@ -245,14 +245,14 @@ const EventHeader = ({
                   <p className="text-gray-500">Hoofdprogramma: 21:30</p>
                 </div>
                 <div className="flex gap-4 items-center">
-                  {event?.category?.map(({ uuid, content: { label } }) => (
+                  {/* {event?.category?.map(({ uuid, content: { label } }) => (
                     <div
                       className="text-gray-500 bg-gray-100 px-4 py-2"
                       key={uuid}
                     >
                       {label}
                     </div>
-                  ))}
+                  ))} */}
                 </div>
                 <Text classNameOverrides="text-gray-500" variant="label">
                   {event?.location}
