@@ -1,6 +1,6 @@
 import { storyblokEditable, StoryblokComponent } from "@storyblok/react/rsc"
 
-export const Page = ({
+export const SbPage = ({
   blok,
 }: {
   blok: {
