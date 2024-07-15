@@ -3,9 +3,12 @@
 import type { ISbStoryData } from "@storyblok/react"
 
 export interface CategoriesStoryblok {
-  label?: string
   component: "categories"
   _uid: string
+  uuid?: string
+  content?: {
+    label?: string
+  }
   [k: string]: any
 }
 export interface AllCategoriesStoryblok {
