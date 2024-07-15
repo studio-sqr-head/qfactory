@@ -1,12 +1,7 @@
 import type { Metadata } from "next"
-import { Inter_Tight } from "next/font/google"
 import { env } from "@/env"
-
-import { Footer } from "@/app/[lang]/components/footer"
-import { Header } from "@/app/[lang]/components/header"
-import { Main } from "@/app/[lang]/components/main"
-
-const inter = Inter_Tight({ subsets: ["latin"] })
+import { abcFavoritRegular } from "@/app/fonts"
+import { MainLayout } from "@/app/[lang]/components/layout"
 
 export async function generateMetadata({
   params,
@@ -50,18 +45,21 @@ export default async function RootLayout(
   props: Readonly<{
     children: React.ReactNode
     params: { lang: "en" | "nl" }
+    modal: React.ReactNode
   }>
 ) {
-  const { children, params } = props
+  const { children, params, modal } = props
+
   return (
     <html
       lang={params.lang}
-      className={`${inter.className} text-black bg-white`}
+      className={`${abcFavoritRegular.className} text-black bg-white`}
     >
-      <body>
-        <Header lang={params.lang} />
-        <Main>{children}</Main>
-        <Footer />
+      <body className="text-black bg-white overflow-x-hidden">
+        <MainLayout params={params}>
+          {children}
+          {modal}
+        </MainLayout>
       </body>
     </html>
   )

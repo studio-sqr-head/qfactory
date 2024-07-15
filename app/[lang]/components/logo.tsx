@@ -1,3 +1,3 @@
 export const Logo = () => {
-  return <p className="text-4xl font-bold">Q-Factory</p>
+  return <p className="md:text-4xl text-2xl font-bold">Q-Factory</p>
 }

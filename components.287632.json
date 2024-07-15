@@ -1,0 +1,472 @@
+{
+  "components": [
+    {
+      "name": "allCategories",
+      "display_name": null,
+      "created_at": "2024-07-12T07:14:12.630Z",
+      "updated_at": "2024-07-12T07:14:12.630Z",
+      "id": 6041831,
+      "schema": {},
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "allCategories",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    },
+    {
+      "name": "allEventsSection",
+      "display_name": null,
+      "created_at": "2024-07-12T06:25:11.726Z",
+      "updated_at": "2024-07-12T07:30:00.551Z",
+      "id": 6041758,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0
+        },
+        "events": {
+          "type": "options",
+          "pos": 1,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "event"
+          ],
+          "component_group_whitelist": [],
+          "source": "internal_stories",
+          "entry_appearance": "card",
+          "allow_advanced_search": true,
+          "folder_slug": "events/",
+          "filter_content_type": [
+            "event"
+          ],
+          "min_options": "1"
+        },
+        "categories": {
+          "type": "options",
+          "pos": 2,
+          "source": "internal_stories",
+          "entry_appearance": "card",
+          "allow_advanced_search": true,
+          "folder_slug": "categories/",
+          "filter_content_type": [
+            "categories"
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "allEventsSection",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    },
+    {
+      "name": "button",
+      "display_name": null,
+      "created_at": "2024-07-11T16:30:01.677Z",
+      "updated_at": "2024-07-11T16:36:39.581Z",
+      "id": 6039707,
+      "schema": {
+        "label": {
+          "type": "text",
+          "pos": 0,
+          "translatable": true
+        },
+        "link": {
+          "type": "text",
+          "pos": 1
+        },
+        "variant": {
+          "type": "options",
+          "pos": 2,
+          "options": [
+            {
+              "_uid": "df312d8b-01f4-4cd1-ab30-0183bfe06574",
+              "name": "primary",
+              "value": "primary"
+            },
+            {
+              "_uid": "54b119ef-cef5-49cc-99ed-57cfbd1aa19a",
+              "value": "secondary",
+              "name": "secondary"
+            }
+          ],
+          "default_value": "primary"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "button",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    },
+    {
+      "name": "carouselItem",
+      "display_name": null,
+      "created_at": "2024-07-11T20:58:27.211Z",
+      "updated_at": "2024-07-12T07:00:23.660Z",
+      "id": 6040667,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0
+        },
+        "subtitle": {
+          "type": "text",
+          "pos": 1
+        },
+        "image": {
+          "type": "asset",
+          "pos": 2
+        },
+        "ctas": {
+          "type": "bloks",
+          "pos": 3,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "button"
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "carouselItem",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    },
+    {
+      "name": "carouselSection",
+      "display_name": null,
+      "created_at": "2024-07-11T20:55:34.802Z",
+      "updated_at": "2024-07-12T07:00:37.081Z",
+      "id": 6040666,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0
+        },
+        "subtitle": {
+          "type": "text",
+          "pos": 2
+        },
+        "carouselItems": {
+          "type": "bloks",
+          "pos": 2,
+          "minimum": 3,
+          "maximum": 3,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "carouselItem"
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "carouselSection",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    },
+    {
+      "name": "category",
+      "display_name": null,
+      "created_at": "2024-07-12T07:09:06.091Z",
+      "updated_at": "2024-07-12T08:53:25.674Z",
+      "id": 6041798,
+      "schema": {
+        "label": {
+          "type": "text",
+          "pos": 0,
+          "translatable": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "category",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    },
+    {
+      "name": "contentLinkSection",
+      "display_name": null,
+      "created_at": "2024-07-12T06:16:12.400Z",
+      "updated_at": "2024-07-12T06:17:11.180Z",
+      "id": 6041756,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0
+        },
+        "body": {
+          "type": "richtext",
+          "pos": 1
+        },
+        "link": {
+          "type": "multilink",
+          "pos": 2
+        },
+        "image": {
+          "type": "asset",
+          "pos": 3,
+          "filetypes": [
+            "images"
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "contentLinkSection",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    },
+    {
+      "name": "contentSection",
+      "display_name": null,
+      "created_at": "2024-07-11T20:34:02.874Z",
+      "updated_at": "2024-07-12T07:01:28.274Z",
+      "id": 6040596,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0,
+          "translatable": true
+        },
+        "image": {
+          "type": "asset",
+          "pos": 2,
+          "filetypes": [
+            "images"
+          ]
+        },
+        "cta": {
+          "type": "bloks",
+          "pos": 3,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "button"
+          ]
+        },
+        "body": {
+          "type": "richtext",
+          "pos": 4
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "contentSection",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    },
+    {
+      "name": "event",
+      "display_name": null,
+      "created_at": "2024-07-12T06:19:40.124Z",
+      "updated_at": "2024-07-15T09:40:08.677Z",
+      "id": 6041757,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0
+        },
+        "image": {
+          "type": "asset",
+          "pos": 1
+        },
+        "preview": {
+          "type": "richtext",
+          "pos": 2,
+          "max_length": 300
+        },
+        "description": {
+          "type": "richtext",
+          "pos": 3
+        },
+        "price": {
+          "type": "number",
+          "pos": 4
+        },
+        "location": {
+          "type": "text",
+          "pos": 5
+        },
+        "datetime": {
+          "type": "datetime",
+          "pos": 6
+        },
+        "category": {
+          "type": "options",
+          "pos": 7,
+          "source": "internal_stories",
+          "entry_appearance": "card",
+          "allow_advanced_search": true,
+          "folder_slug": "categories/",
+          "filter_content_type": [
+            "categories"
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "event",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    },
+    {
+      "name": "heroSection",
+      "display_name": null,
+      "created_at": "2024-07-11T15:01:14.893Z",
+      "updated_at": "2024-07-12T07:00:54.964Z",
+      "id": 6039330,
+      "schema": {
+        "header": {
+          "type": "text",
+          "pos": 0,
+          "translatable": true
+        },
+        "subheader": {
+          "type": "text",
+          "pos": 1,
+          "translatable": true
+        },
+        "heroImage": {
+          "type": "asset",
+          "pos": 2,
+          "translatable": true
+        },
+        "cta": {
+          "type": "bloks",
+          "pos": 3,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "event"
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "heroSection",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    },
+    {
+      "name": "page",
+      "display_name": null,
+      "created_at": "2024-07-11T15:18:47.520Z",
+      "updated_at": "2024-07-11T16:19:50.789Z",
+      "id": 6039450,
+      "schema": {
+        "body": {
+          "type": "bloks",
+          "pos": 0
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "page",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null
+    }
+  ]
+}

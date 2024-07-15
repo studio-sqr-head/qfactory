@@ -8,7 +8,7 @@ export const Footer = () => {
     <footer className="bg-gray-100 border-t border-gray-300">
       <Container>
         <div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-4">
             <div>
               <Logo />
               <Address />
@@ -60,7 +60,7 @@ export const Footer = () => {
               </div>
             </div>
 
-            <div>
+            <div className="flex flex-col justify-start items-end">
               <form>
                 <input
                   type="email"
@@ -76,7 +76,7 @@ export const Footer = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-4">
             <div className="flex gap-4 items-center">
               {["instagram", "linkedin", "facebook", "spotify"].map(
                 (social) => (
