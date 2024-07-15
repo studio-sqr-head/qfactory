@@ -143,7 +143,7 @@ export const AllEventsSection = ({
 }: {
   blok: AllEventsSectionStoryblok
 }) => {
-  const [category, setCategory] = useState("All")
+  const [category, setCategory] = useState("All") // FIXME: Fix typing AND translation
 
   const events =
     category === "All"
