@@ -10,8 +10,8 @@ import {
   CarouselSection,
   AllEventsSection,
   ContentLinkSection,
-} from "./wip"
-import { SbPage } from "./page"
+  Page,
+} from "@/app/[lang]/components/storyblok"
 
 export const components = {
   heroSection: HeroSection,
@@ -19,7 +19,7 @@ export const components = {
   carouselSection: CarouselSection,
   allEventsSection: AllEventsSection,
   contentLinkSection: ContentLinkSection,
-  page: SbPage,
+  page: Page,
 }
 
 storyblokInit({

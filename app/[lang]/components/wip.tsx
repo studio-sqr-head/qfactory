@@ -3,135 +3,27 @@
 import { useParams } from "next/navigation"
 import NextImage from "next/image"
 import NextLink from "next/link"
-import { useEffect, useCallback, useState, useRef } from "react"
+import { useState } from "react"
 import { Container } from "@/app/[lang]/components/container"
-import { XMarkIcon } from "@heroicons/react/24/outline"
-import { Button, DialogPanel, Dialog, DialogBackdrop } from "@headlessui/react"
+import { Button } from "@headlessui/react"
 import clsx from "clsx"
-import { AnimatePresence, motion } from "framer-motion"
-import { storyblokEditable } from "@storyblok/react/rsc"
+import { motion } from "framer-motion"
 import { formatDatetime } from "@/utils/formatDatetime"
-import { Text } from "@/app/[lang]/components/text"
 
-import { RichText } from "./rich-text"
+import { Text } from "@/app/[lang]/components/text"
+import { RichText } from "@/app/[lang]/components/rich-text"
 import {
   CarouselSectionStoryblok,
-  HeroSectionStoryblok,
-  ContentSectionStoryblok,
   EventStoryblok,
   AllEventsSectionStoryblok,
 } from "@/types"
 import { formatCurrency } from "@/utils/formatCurrency"
 
-export const HeroSection = ({ blok }: { blok: HeroSectionStoryblok }) => {
-  return (
-    <div
-      className="flex flex-col items-center justify-center h-[calc(100vh-72px)] relative aspect-w-16 aspect-h-9"
-      {...storyblokEditable(blok)}
-    >
-      {blok.heroImage?.filename && (
-        <NextImage
-          src={blok.heroImage?.filename}
-          alt={blok.heroImage?.alt ?? "Hero image"}
-          fill
-          priority
-          className="brightness-50 object-cover object-center"
-        />
-      )}
-
-      <div className="absolute bottom-0 left-0 top-0 right-0 flex flex-col items-start justify-end z-10">
-        <Container classNameOverrides="py-8">
-          <Text variant="headline" classNameOverrides="text-white">
-            {blok.header}
-          </Text>
-          <Text variant="subline" classNameOverrides="text-white">
-            {blok.subheader}
-          </Text>
-          {blok?.cta?.map((cta) => (
-            <Button
-              key={cta._uid}
-              className={clsx("bg-white text-black px-4 py-2")}
-            >
-              {cta.label}
-            </Button>
-          ))}
-        </Container>
-      </div>
-    </div>
-  )
-}
-
 export const Divider = () => {
   return <div className="bg-gray-100 h-1" />
 }
 
-export const ContentSection = ({ blok }: { blok: ContentSectionStoryblok }) => {
-  return (
-    <Container classNameOverrides="py-16" {...storyblokEditable(blok)}>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="flex flex-col gap-4">
-          <Text variant="headline">{blok.title}</Text>
-          <RichText document={blok.content} />
-        </div>
-        {blok.image && (
-          <div className="relative w-full h-96">
-            <NextImage
-              src={blok.image?.filename}
-              alt={blok.image?.alt ?? ""}
-              fill
-            />
-          </div>
-        )}
-      </div>
-    </Container>
-  )
-}
-export const ContentLinkSection = ({
-  blok,
-}: {
-  blok: ContentSectionStoryblok
-}) => {
-  return (
-    <Container classNameOverrides="py-16" {...storyblokEditable(blok)}>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="flex flex-col gap-4">
-          <Text variant="headline">{blok.title}</Text>
-          <RichText document={blok.content} />
-          {/* FIXME */}
-          <NextLink className="bg-black text-white px-4 py-2" href={blok.link}>
-            Cafe
-          </NextLink>
-        </div>
-        {blok.image && (
-          <div className="relative w-full h-96">
-            <NextImage
-              src={blok.image?.filename}
-              alt={blok.image?.alt ?? ""}
-              fill
-            />
-          </div>
-        )}
-      </div>
-    </Container>
-  )
-}
-
-export const CarouselSection = ({
-  blok,
-}: {
-  blok: CarouselSectionStoryblok
-}) => {
-  return (
-    <Container classNameOverrides="py-16" {...storyblokEditable(blok)}>
-      <Text variant="headline">{blok.title}</Text>
-      <div className="flex space-x-4">
-        <Carousel carouselItems={blok?.carouselItems} />
-      </div>
-    </Container>
-  )
-}
-
-const Carousel = ({
+export const Carousel = ({
   carouselItems,
 }: {
   carouselItems: CarouselSectionStoryblok["carouselItems"]
@@ -203,57 +95,7 @@ const Carousel = ({
   )
 }
 
-export const AllEventsSection = ({
-  blok,
-}: {
-  blok: AllEventsSectionStoryblok
-}) => {
-  // const [showModal, setShowModal] = useState(false)
-  const [category, setCategory] = useState("All")
-
-  const events =
-    category === "All"
-      ? blok?.events
-      : blok?.events?.filter(({ content }) =>
-          content?.category?.includes(category)
-        )
-
-  // const handleOpenModal = () => {
-  //   setShowModal(true)
-  // }
-  // const handleCloseModal = () => {
-  //   setShowModal(false)
-  // }
-
-  return (
-    <Container classNameOverrides="py-16">
-      <Text variant="headline">{blok.title}</Text>
-
-      <div className="flex gap-4 mb-8 overflow-x-auto">
-        {[
-          { uuid: "all", content: { label: "All" } },
-          ...(blok?.categories ?? []),
-        ]?.map(({ uuid, content }, key) => (
-          <Button
-            key={uuid}
-            onClick={() => setCategory(content?.label)}
-            className={clsx(
-              "border border-black px-4 py-2 rounded-full",
-              category === content?.label ? "bg-black text-white" : "text-black"
-            )}
-          >
-            {content?.label}
-          </Button>
-        ))}
-      </div>
-
-      <EventList events={events} />
-      {/* <EventModal showModal={showModal} handleCloseModal={handleCloseModal} /> */}
-    </Container>
-  )
-}
-
-const EventList = ({
+export const EventList = ({
   events,
 }: {
   events: AllEventsSectionStoryblok["events"]
