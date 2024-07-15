@@ -183,10 +183,10 @@ export const Menu = ({
               <Button className="bg-white text-black px-4 py-2">
                 Bekijk programma
               </Button>
-              <NextLink className="text-white py-2" href="/repetitieruimtes">
+              <NextLink className="text-white py-2" href={"/"}>
                 Boek repetitieruimte
               </NextLink>
-              <NextLink className="text-white py-2" href="/studio">
+              <NextLink className="text-white py-2" href="/en">
                 Boek studio
               </NextLink>
             </div>

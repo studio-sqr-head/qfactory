@@ -11,7 +11,7 @@ import {
   AllEventsSection,
   ContentLinkSection,
 } from "./wip"
-import { Page } from "./page"
+import { SbPage } from "./page"
 
 export const components = {
   heroSection: HeroSection,
@@ -19,7 +19,7 @@ export const components = {
   carouselSection: CarouselSection,
   allEventsSection: AllEventsSection,
   contentLinkSection: ContentLinkSection,
-  page: Page,
+  page: SbPage,
 }
 
 storyblokInit({
