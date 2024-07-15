@@ -30,7 +30,7 @@ const LanguageSwitch = ({
         <NextLink
           key={id}
           className={`${lang === id ? "underline" : ""} hover:underline`}
-          href={path}
+          href={path as any} // FIXME: Fix typing
         >
           {title}
         </NextLink>

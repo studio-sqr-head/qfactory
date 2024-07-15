@@ -1,6 +1,3 @@
-import { UrlObject } from "url"
-import { Route } from "next"
-
 export enum Language {
   nl = "nl",
   en = "en",
