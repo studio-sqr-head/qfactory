@@ -18,13 +18,8 @@ export default async function Page({
   )
 }
 
-export async function fetchData({
-  lang,
-  slug,
-}: {
-  lang: "en" | "nl"
-  slug: string
-}) {
+export async function fetchData(params: { lang: "en" | "nl"; slug: string }) {
+  const { lang, slug } = params
   const sbParams: ISbStoriesParams = {
     language: lang,
     resolve_relations: [

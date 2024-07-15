@@ -38,17 +38,13 @@
           "pos": 1,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "event"
-          ],
+          "component_whitelist": ["event"],
           "component_group_whitelist": [],
           "source": "internal_stories",
           "entry_appearance": "card",
           "allow_advanced_search": true,
           "folder_slug": "events/",
-          "filter_content_type": [
-            "event"
-          ],
+          "filter_content_type": ["event"],
           "min_options": "1"
         },
         "categories": {
@@ -58,9 +54,7 @@
           "entry_appearance": "card",
           "allow_advanced_search": true,
           "folder_slug": "categories/",
-          "filter_content_type": [
-            "categories"
-          ]
+          "filter_content_type": ["categories"]
         }
       },
       "image": null,
@@ -151,9 +145,7 @@
           "pos": 3,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "button"
-          ]
+          "component_whitelist": ["button"]
         }
       },
       "image": null,
@@ -193,9 +185,7 @@
           "maximum": 3,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "carouselItem"
-          ]
+          "component_whitelist": ["carouselItem"]
         }
       },
       "image": null,
@@ -263,9 +253,7 @@
         "image": {
           "type": "asset",
           "pos": 3,
-          "filetypes": [
-            "images"
-          ]
+          "filetypes": ["images"]
         }
       },
       "image": null,
@@ -298,18 +286,14 @@
         "image": {
           "type": "asset",
           "pos": 2,
-          "filetypes": [
-            "images"
-          ]
+          "filetypes": ["images"]
         },
         "cta": {
           "type": "bloks",
           "pos": 3,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "button"
-          ]
+          "component_whitelist": ["button"]
         },
         "body": {
           "type": "richtext",
@@ -374,9 +358,7 @@
           "entry_appearance": "card",
           "allow_advanced_search": true,
           "folder_slug": "categories/",
-          "filter_content_type": [
-            "categories"
-          ]
+          "filter_content_type": ["categories"]
         }
       },
       "image": null,
@@ -421,9 +403,7 @@
           "pos": 3,
           "restrict_type": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "event"
-          ]
+          "component_whitelist": ["event"]
         }
       },
       "image": null,
