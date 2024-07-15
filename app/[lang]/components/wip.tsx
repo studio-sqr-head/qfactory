@@ -6,6 +6,7 @@ import NextLink from "next/link"
 import { useState } from "react"
 import { Container } from "@/app/[lang]/components/container"
 import { Button } from "@headlessui/react"
+import { ISbStoryData } from "@storyblok/react"
 import clsx from "clsx"
 import { motion } from "framer-motion"
 import { formatDatetime } from "@/utils/formatDatetime"
@@ -16,6 +17,8 @@ import {
   CarouselSectionStoryblok,
   EventStoryblok,
   AllEventsSectionStoryblok,
+  CategoriesStoryblok,
+  RichtextStoryblok,
 } from "@/types"
 import { formatCurrency } from "@/utils/formatCurrency"
 
@@ -102,7 +105,7 @@ export const EventList = ({
 }) => {
   return (
     <div className="flex flex-col md:gap-4 gap-8">
-      {events?.map(
+      {(events as ISbStoryData<EventStoryblok>[])?.map(
         ({
           uuid,
           slug,
@@ -149,11 +152,11 @@ export const EventListItem = ({
 }: {
   slug: string
   uuid: string
-  title: string
-  location: string
-  description: string
-  datetime: Date
-  price: number
+  title?: string
+  location?: string
+  description?: RichtextStoryblok
+  datetime?: string
+  price?: any // FIXME: Fix typing
   image: EventStoryblok["image"]
   category: EventStoryblok["category"]
 }) => {
@@ -180,11 +183,13 @@ export const EventListItem = ({
 
         <div className="absolute bottom-0 left-0 right-0">
           <div className="flex gap-4">
-            {category?.map(({ uuid, content: { label } }) => (
-              <div key={uuid} className="bg-black text-white px-2 py-1">
-                <Text variant="label">{label}</Text>
-              </div>
-            ))}
+            {(category as ISbStoryData<CategoriesStoryblok>[])?.map(
+              ({ uuid, content: { label } }) => (
+                <div key={uuid} className="bg-black text-white px-2 py-1">
+                  <Text variant="label">{label}</Text>
+                </div>
+              )
+            )}
           </div>
         </div>
       </div>
@@ -199,7 +204,9 @@ export const EventListItem = ({
         </div>
 
         <div className="flex md:flex-col justify-between items-end h-full w-full flex-1">
-          <Text variant="label">{formatDatetime({ datetime, lang })}</Text>
+          {datetime && (
+            <Text variant="label">{formatDatetime({ datetime, lang })}</Text>
+          )}
           <Text variant="label" classNameOverrides="text-gray-500">
             {formatCurrency({
               amount: price,

@@ -3,7 +3,11 @@
 import NextImage from "next/image"
 import NextLink from "next/link"
 import { useState } from "react"
-import { storyblokEditable, StoryblokComponent } from "@storyblok/react/rsc"
+import {
+  storyblokEditable,
+  StoryblokComponent,
+  ISbStoryData,
+} from "@storyblok/react/rsc"
 import { Button } from "@headlessui/react"
 import clsx from "clsx"
 
@@ -15,7 +19,11 @@ import {
   ContentSectionStoryblok,
   HeroSectionStoryblok,
   AllEventsSectionStoryblok,
+  CategoryStoryblok,
+  EventStoryblok,
+  CategoriesStoryblok,
 } from "@/types"
+
 import { Carousel, EventList } from "@/app/[lang]/components/wip"
 
 export const Page = ({
@@ -143,13 +151,17 @@ export const AllEventsSection = ({
 }: {
   blok: AllEventsSectionStoryblok
 }) => {
-  const [category, setCategory] = useState("All") // FIXME: Fix typing AND translation
+  const [selectedCategory, setSelectedCategory] = useState("all") // FIXME: Fix typing AND translation
 
-  const events =
-    category === "All"
-      ? blok?.events
-      : blok?.events?.filter(({ content }) =>
-          content?.category?.includes(category)
+  const { categories, events } = blok
+
+  const filteredEvents =
+    selectedCategory === "all"
+      ? events
+      : (events as ISbStoryData<EventStoryblok>[])?.filter(({ content }) =>
+          (content?.category as ISbStoryData<CategoryStoryblok>[])?.some(
+            ({ name }) => name.toLowerCase() === selectedCategory.toLowerCase()
+          )
         )
 
   return (
@@ -157,24 +169,30 @@ export const AllEventsSection = ({
       <Text variant="headline">{blok.title}</Text>
 
       <div className="flex gap-4 mb-8 overflow-x-auto">
-        {[
-          { uuid: "all", content: { label: "All" } },
-          ...(blok?.categories ?? []),
-        ]?.map(({ uuid, content }, key) => (
-          <Button
-            key={uuid}
-            onClick={() => setCategory(content?.label)}
-            className={clsx(
-              "border border-black px-4 py-2 rounded-full",
-              category === content?.label ? "bg-black text-white" : "text-black"
-            )}
-          >
-            {content?.label}
-          </Button>
-        ))}
+        {(
+          [
+            { name: "all", content: { label: "All" } },
+            ...(categories ?? []),
+          ] as ISbStoryData<CategoriesStoryblok>[]
+        )?.map(({ uuid, name, content }, key) => {
+          const isSelected =
+            selectedCategory.toLowerCase() === name.toLowerCase()
+          return (
+            <Button
+              key={uuid}
+              onClick={() => setSelectedCategory(name)}
+              className={clsx(
+                "border border-black px-4 py-2 rounded-full",
+                isSelected ? "bg-black text-white" : "text-black"
+              )}
+            >
+              {content?.label}
+            </Button>
+          )
+        })}
       </div>
 
-      <EventList events={events} />
+      <EventList events={filteredEvents} />
     </Container>
   )
 }

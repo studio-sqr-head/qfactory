@@ -2,7 +2,7 @@ export const formatDatetime = ({
   datetime,
   lang,
 }: {
-  datetime: Date
+  datetime: string
   lang: "en" | "nl"
 }) => {
   const date = new Date(datetime)
