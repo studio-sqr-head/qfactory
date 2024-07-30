@@ -1,4 +1,5 @@
 import { Modal } from "@/app/[lang]/components/modal"
+
 import {
   getStoryblokApi,
   ISbStoriesParams,
@@ -6,14 +7,13 @@ import {
   apiPlugin,
 } from "@storyblok/react/rsc"
 import { env } from "@/env"
-import { components } from "@/app/[lang]/components/storyblok-provider"
+import { storyblokComponents } from "@/app/[lang]/components/storyblok"
 
 storyblokInit({
   accessToken: env.NEXT_PUBLIC_STORYBLOK_PREVIEW_TOKEN,
   use: [apiPlugin],
-  components,
-})
-// getEventDetails
+  components: storyblokComponents,
+}) // getEventDetails
 const getEventDetails = async ({
   lang,
   slug,
@@ -41,7 +41,7 @@ const getEventDetails = async ({
   return response
 }
 
-const EventModalPage = async ({
+const ModalPage = async ({
   params,
 }: {
   params: {
@@ -59,4 +59,4 @@ const EventModalPage = async ({
 
   return <Modal showModal={true} event={data?.story?.content} />
 }
-export default EventModalPage
+export default ModalPage

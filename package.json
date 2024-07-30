@@ -6,10 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "start:proxy": "local-ssl-proxy --source 3010 --target 3000 --cert localhost.pem --key localhost-key.pem",
     "lint": "next lint",
     "format": "prettier --write .",
-    "pull-components": "storyblok pull-components --space 287632",
-    "generate-types": "npm run pull-components && storyblok generate-typescript-typedefs --sourceFilePaths ./components.287632.json --destinationFilePath ./types.ts",
+    "pull-components": "npx storyblok pull-components --space 287632",
+    "generate-types": "npm run pull-components && npx storyblok generate-typescript-typedefs --sourceFilePaths ./components.287632.json --destinationFilePath ./types.ts",
     "prepare": "husky"
   },
   "dependencies": {

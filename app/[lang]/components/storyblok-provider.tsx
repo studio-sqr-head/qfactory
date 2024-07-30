@@ -4,28 +4,12 @@ import { storyblokInit, apiPlugin } from "@storyblok/react/rsc"
 import { env } from "@/env"
 
 /** 2. Import your components */
-import {
-  HeroSection,
-  ContentSection,
-  CarouselSection,
-  AllEventsSection,
-  ContentLinkSection,
-  Page,
-} from "@/app/[lang]/components/storyblok"
-
-export const components = {
-  heroSection: HeroSection,
-  contentSection: ContentSection,
-  carouselSection: CarouselSection,
-  allEventsSection: AllEventsSection,
-  contentLinkSection: ContentLinkSection,
-  page: Page,
-}
+import { storyblokComponents } from "@/app/[lang]/components/storyblok"
 
 storyblokInit({
   accessToken: env.NEXT_PUBLIC_STORYBLOK_PREVIEW_TOKEN,
   use: [apiPlugin],
-  components,
+  components: storyblokComponents,
 })
 
 export function StoryblokProvider({ children }: { children: React.ReactNode }) {

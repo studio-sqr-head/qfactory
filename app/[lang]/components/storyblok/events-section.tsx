@@ -1,100 +1,74 @@
 "use client"
 
-import { useParams } from "next/navigation"
 import NextImage from "next/image"
 import NextLink from "next/link"
+import { useParams } from "next/navigation"
 import { useState } from "react"
-import { Container } from "@/app/[lang]/components/container"
+import { ISbStoryData } from "@storyblok/react/rsc"
 import { Button } from "@headlessui/react"
-import { ISbStoryData } from "@storyblok/react"
 import clsx from "clsx"
-import { motion } from "framer-motion"
-import { formatDatetime } from "@/utils/formatDatetime"
 
+import { Container } from "@/app/[lang]/components/container"
 import { Text } from "@/app/[lang]/components/text"
 import { RichText } from "@/app/[lang]/components/rich-text"
 import {
-  CarouselSectionStoryblok,
-  EventStoryblok,
   AllEventsSectionStoryblok,
+  CategoryStoryblok,
+  EventStoryblok,
   CategoriesStoryblok,
   RichtextStoryblok,
 } from "@/types"
+import { formatDatetime } from "@/utils/formatDatetime"
 import { formatCurrency } from "@/utils/formatCurrency"
 
-export const Divider = () => {
-  return <div className="bg-gray-100 h-1" />
-}
-
-export const Carousel = ({
-  carouselItems,
+export const AllEventsSection = ({
+  blok,
 }: {
-  carouselItems: CarouselSectionStoryblok["carouselItems"]
+  blok: AllEventsSectionStoryblok
 }) => {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const margin = 16
+  const [selectedCategory, setSelectedCategory] = useState("all") // FIXME: Fix typing AND translation
 
-  const nextItem = () => {
-    if (!carouselItems) return
-    setCurrentIndex((prev) => (prev + 1) % carouselItems?.length)
-  }
+  const { categories, events } = blok
 
-  const prevItem = () => {
-    if (!carouselItems) return
-    setCurrentIndex(
-      (prev) => (prev - 1 + carouselItems?.length) % carouselItems?.length
-    )
-  }
+  const filteredEvents =
+    selectedCategory === "all"
+      ? events
+      : (events as ISbStoryData<EventStoryblok>[])?.filter(({ content }) =>
+          (content?.category as ISbStoryData<CategoryStoryblok>[])?.some(
+            ({ name }) => name.toLowerCase() === selectedCategory.toLowerCase()
+          )
+        )
+
   return (
-    <div className="relative overflow-x-hidden w-full">
-      <motion.div
-        className="flex gap-4 w-full"
-        initial={{ x: 0 }}
-        transition={{ type: "tween", duration: 0.5 }}
-        animate={{
-          x: `calc(-${currentIndex * 100}% - ${margin * currentIndex}px)`,
-        }}
-      >
-        {carouselItems?.map(({ _uid, image, title, subtitle, ctas }) => (
-          <div key={_uid} className="w-full min-w-full">
-            <div className="relative h-96 w-full">
-              {image?.filename && (
-                <NextImage
-                  src={image?.filename}
-                  alt={image?.alt ?? "Image"}
-                  fill
-                  className="object-cover object-center"
-                />
+    <Container classNameOverrides="py-16">
+      <Text variant="headline">{blok.title}</Text>
+
+      <div className="flex gap-4 mb-8 overflow-x-auto">
+        {(
+          [
+            { name: "all", content: { label: "All" } },
+            ...(categories ?? []),
+          ] as ISbStoryData<CategoriesStoryblok>[]
+        )?.map(({ uuid, name, content }, key) => {
+          const isSelected =
+            selectedCategory.toLowerCase() === name.toLowerCase()
+          return (
+            <Button
+              key={`${uuid}-${key}`}
+              onClick={() => setSelectedCategory(name)}
+              className={clsx(
+                "border border-black px-4 py-2 rounded-full",
+                isSelected ? "bg-black text-white" : "text-black"
               )}
-            </div>
-            <div className="flex flex-col gap-4 py-4">
-              <Text variant="subline">{title}</Text>
-              <Text variant="body">{subtitle}</Text>
-
-              <div className="flex gap-4">
-                {ctas?.map(({ label, _uid }) => (
-                  <Button
-                    key={_uid}
-                    className={clsx("bg-black text-white px-4 py-2")}
-                  >
-                    <Text variant="label">{label}</Text>
-                  </Button>
-                ))}
-              </div>
-            </div>
-          </div>
-        ))}
-      </motion.div>
-
-      <div className="flex gap-4">
-        <button onClick={prevItem} className="bg-black text-white p-2">
-          Prev
-        </button>
-        <button onClick={nextItem} className="bg-black text-white p-2">
-          Next
-        </button>
+            >
+              {content?.label}
+            </Button>
+          )
+        })}
       </div>
-    </div>
+
+      <EventList events={filteredEvents} />
+    </Container>
   )
 }
 

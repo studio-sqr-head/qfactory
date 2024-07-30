@@ -1,9 +1,8 @@
 import type { Metadata, Viewport } from "next"
-import {
-  StoryblokProvider,
-  components,
-} from "@/app/[lang]/components/storyblok-provider"
 import { storyblokInit, apiPlugin } from "@storyblok/react/rsc"
+
+import { StoryblokProvider } from "@/app/[lang]/components/storyblok-provider"
+import { storyblokComponents } from "@/app/[lang]/components/storyblok"
 import { env } from "@/env"
 
 import "./globals.css"
@@ -29,8 +28,9 @@ export async function generateMetadata(): Promise<Metadata> {
 storyblokInit({
   accessToken: env.NEXT_PUBLIC_STORYBLOK_PREVIEW_TOKEN,
   use: [apiPlugin],
-  components,
+  components: storyblokComponents,
 })
+
 export default async function RootLayout(
   props: Readonly<{
     children: React.ReactNode

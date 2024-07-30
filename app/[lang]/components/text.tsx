@@ -9,7 +9,7 @@ export const Text = ({
   classNameOverrides,
   as,
 }: {
-  variant?: "headline" | "subline" | "body" | "label"
+  variant?: "headline" | "subline" | "body" | "label" | "title"
   children: React.ReactNode
   classNameOverrides?: string
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span"
@@ -19,7 +19,7 @@ export const Text = ({
       <h1
         className={clsx(
           maaxMonoBold.className,
-          "text-4xl text-start",
+          "text-6xl text-start",
           classNameOverrides
         )}
       >
@@ -40,6 +40,20 @@ export const Text = ({
       </h2>
     )
   }
+  if (variant === "title") {
+    return createElement(
+      as || "p",
+      {
+        className: clsx(
+          maaxMonoBold.className,
+          "text-4xl text-start",
+          classNameOverrides
+        ),
+      },
+      children
+    )
+  }
+
   if (variant === "body") {
     return createElement(
       as || "p",
